@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { escapeHtml, renderCard, renderResults, renderNew, renderLoadError } from "../js/app.js";
 
 const c = {
-  id: "a", region: "가구", regionType: "광역시 자치구", title: "골목길 조명", fields: ["안전"],
+  id: "a", region: "가구", regionType: "특별·광역시 자치구", title: "골목길 조명", fields: ["안전"],
   year: 2025, budget: null, summary: "요약 & 내용", awardSource: "행정안전부 사례집",
   url: "https://example.go.kr/a", status: "확인 완료", checkedDate: "2026. 11. 25.", addedMonth: null,
 };

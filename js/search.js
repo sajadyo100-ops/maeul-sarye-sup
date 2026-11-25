@@ -1,7 +1,7 @@
 // 검색·거르기 로직 (화면과 분리된 순수 함수)
 
-export const FIELDS = ["안전", "환경", "어르신", "아이·청소년", "골목·주거", "문화·축제"];
-export const REGION_TYPES = ["광역 시·도", "광역시 자치구", "시", "군"];
+export const FIELDS = ["안전", "환경", "어르신", "아이·청소년", "청년", "복지·돌봄", "골목·주거", "문화·축제", "제도 운영"];
+export const REGION_TYPES = ["광역 시·도", "특별·광역시 자치구", "시", "군"];
 
 export function normalize(text) {
   return String(text ?? "").toLowerCase().replace(/\s+/g, "");

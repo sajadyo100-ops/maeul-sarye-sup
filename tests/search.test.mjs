@@ -5,10 +5,10 @@ import {
 } from "../js/search.js";
 
 const cases = [
-  { id: "a", region: "가구", regionType: "광역시 자치구", title: "골목길 조명 개선", summary: "어두운 골목", fields: ["안전", "골목·주거"], year: 2024, status: "확인 완료", addedMonth: null },
+  { id: "a", region: "가구", regionType: "특별·광역시 자치구", title: "골목길 조명 개선", summary: "어두운 골목", fields: ["안전", "골목·주거"], year: 2024, status: "확인 완료", addedMonth: null },
   { id: "b", region: "나군", regionType: "군", title: "마을 쓰레기 줄이기", summary: "분리배출", fields: ["환경"], year: 2025, status: "확인 완료", addedMonth: "2026-12" },
   { id: "c", region: "다시", regionType: "시", title: "청소년 쉼터", summary: "방과 후", fields: ["아이·청소년"], year: 2025, status: "확인 완료", addedMonth: null },
-  { id: "d", region: "라구", regionType: "광역시 자치구", title: "골목 벽화", summary: "확인 전 후보", fields: ["골목·주거"], year: 2026, status: "확인 전", addedMonth: "2026-12" },
+  { id: "d", region: "라구", regionType: "특별·광역시 자치구", title: "골목 벽화", summary: "확인 전 후보", fields: ["골목·주거"], year: 2026, status: "확인 전", addedMonth: "2026-12" },
 ];
 
 test("normalize: 공백 제거와 소문자화", () => {
@@ -54,6 +54,6 @@ test("formatBudget: 없으면 확인되지 않음", () => {
 });
 
 test("FIELDS와 REGION_TYPES 값과 순서", () => {
-  assert.deepEqual(FIELDS, ["안전", "환경", "어르신", "아이·청소년", "골목·주거", "문화·축제"]);
-  assert.deepEqual(REGION_TYPES, ["광역 시·도", "광역시 자치구", "시", "군"]);
+  assert.deepEqual(FIELDS, ["안전", "환경", "어르신", "아이·청소년", "청년", "복지·돌봄", "골목·주거", "문화·축제", "제도 운영"]);
+  assert.deepEqual(REGION_TYPES, ["광역 시·도", "특별·광역시 자치구", "시", "군"]);
 });

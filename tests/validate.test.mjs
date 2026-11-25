@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { validateCase } from "../tools/validate-cases.mjs";
 
 const good = {
-  id: "x-1", region: "가구", regionType: "광역시 자치구", title: "사업", fields: ["안전"],
+  id: "x-1", region: "가구", regionType: "특별·광역시 자치구", title: "사업", fields: ["안전"],
   year: 2025, budget: null, summary: "요약", awardSource: "행정안전부", url: "https://example.go.kr/a",
   status: "확인 완료", checkedDate: "2026. 11. 25.", addedMonth: null,
 };

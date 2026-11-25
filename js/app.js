@@ -1,7 +1,7 @@
 // 화면 그리기와 이벤트
 import { FIELDS, REGION_TYPES, searchCases, newCases, formatBudget } from "./search.js";
 
-const ICONS = { "안전": "🚸", "환경": "🌳", "어르신": "👵", "아이·청소년": "🧒", "골목·주거": "🏘️", "문화·축제": "🎉" };
+const ICONS = { "안전": "🚸", "환경": "🌳", "어르신": "👵", "아이·청소년": "🧒", "청년": "🙋", "복지·돌봄": "🤝", "골목·주거": "🏘️", "문화·축제": "🎉", "제도 운영": "📋" };
 
 export function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (ch) =>
