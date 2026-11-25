@@ -21,7 +21,7 @@ test("renderCard: 데이터 속 태그가 실행되지 않음", () => {
 
 test("renderCard: 필요한 정보와 안전한 원문 링크 포함", () => {
   const html = renderCard(c);
-  for (const s of ["가구", "골목길 조명", "확인되지 않음", "행정안전부 사례집", "2026. 11. 25.",
+  for (const s of ["가구 · 2025 선정", "골목길 조명", "확인되지 않음", "행정안전부 사례집", "2026. 11. 25.",
     'href="https://example.go.kr/a"', 'target="_blank"', 'rel="noopener"', "원문 보기"]) {
     assert.ok(html.includes(s), s);
   }

@@ -13,7 +13,7 @@ export function renderCard(c) {
   const icon = ICONS[(c.fields || [])[0]] || "🌱";
   return `<article class="case-card">
   <div class="case-icon" aria-hidden="true">${icon}</div>
-  <p class="case-region">${e(c.region)} · ${e(c.year)}</p>
+  <p class="case-region">${e(c.region)} · ${e(c.year)} 선정</p>
   <h3 class="case-title">${e(c.title)}</h3>
   <p class="case-fields">${(c.fields || []).map((f) => `<span>${e(f)}</span>`).join("")}</p>
   <details>
