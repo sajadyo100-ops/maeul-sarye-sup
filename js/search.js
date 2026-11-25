@@ -13,12 +13,13 @@ export function publicCases(cases) {
     .sort((a, b) => (b.year - a.year) || a.region.localeCompare(b.region, "ko"));
 }
 
-export function searchCases(cases, { query = "", field = "전체", regionType = "전체" } = {}) {
+export function searchCases(cases, { query = "", field = "전체", regionType = "전체", regionTypes = [] } = {}) {
   const q = normalize(query);
   return publicCases(cases).filter((c) =>
     (!q || [c.title, c.summary, c.region].some((t) => normalize(t).includes(q))) &&
     (field === "전체" || (c.fields || []).includes(field)) &&
-    (regionType === "전체" || c.regionType === regionType)
+    (regionType === "전체" || c.regionType === regionType) &&
+    (regionTypes.length === 0 || regionTypes.includes(c.regionType))
   );
 }
 

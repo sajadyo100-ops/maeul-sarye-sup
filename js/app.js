@@ -43,6 +43,12 @@ export function renderNew(list) {
 </div>`).join("\n");
 }
 
+export function renderRegionChecks(selected) {
+  return REGION_TYPES.map((v) =>
+    `<label class="chip check${selected.includes(v) ? " on" : ""}"><input type="checkbox" value="${escapeHtml(v)}"${selected.includes(v) ? " checked" : ""}> ${escapeHtml(v)}</label>`
+  ).join("");
+}
+
 export function renderLoadError() {
   return `<p class="empty">사례를 불러오지 못했어요. 잠시 뒤 다시 열어 주세요.</p>`;
 }
@@ -50,7 +56,7 @@ export function renderLoadError() {
 // ---------- 브라우저에서만 실행 ----------
 async function start() {
   const $ = (id) => document.getElementById(id);
-  const state = { query: "", field: "전체", regionType: "전체", mode: "field" };
+  const state = { query: "", field: "전체", regionTypes: [], mode: "field" };
   let cases = [];
 
   try {
@@ -69,10 +75,15 @@ async function start() {
   $("new-section").hidden = fresh.length === 0;
 
   function drawChips() {
-    const items = ["전체", ...(state.mode === "field" ? FIELDS : REGION_TYPES)];
-    const current = state.mode === "field" ? state.field : state.regionType;
-    $("chips").innerHTML = items.map((v) =>
-      `<button type="button" class="chip${v === current ? " on" : ""}" data-v="${escapeHtml(v)}" aria-pressed="${v === current}">${escapeHtml(v)}</button>`).join("");
+    if (state.mode === "field") {
+      $("chips").innerHTML = ["전체", ...FIELDS].map((v) =>
+        `<button type="button" class="chip${v === state.field ? " on" : ""}" data-v="${escapeHtml(v)}" aria-pressed="${v === state.field}">${escapeHtml(v)}</button>`).join("");
+    } else {
+      const all = state.regionTypes.length === 0;
+      $("chips").innerHTML =
+        `<button type="button" class="chip${all ? " on" : ""}" data-v="전체" aria-pressed="${all}">전체</button>` +
+        renderRegionChecks(state.regionTypes);
+    }
     $("mode-field").classList.toggle("on", state.mode === "field");
     $("mode-region").classList.toggle("on", state.mode === "region");
   }
@@ -86,12 +97,17 @@ async function start() {
 
   $("search").addEventListener("input", (ev) => { state.query = ev.target.value; draw(); });
   $("search-form").addEventListener("submit", (ev) => { ev.preventDefault(); draw(); $("cases").scrollIntoView({ behavior: "smooth" }); });
-  $("mode-field").addEventListener("click", () => { state.mode = "field"; state.regionType = "전체"; drawChips(); draw(); });
+  $("mode-field").addEventListener("click", () => { state.mode = "field"; state.regionTypes = []; drawChips(); draw(); });
   $("mode-region").addEventListener("click", () => { state.mode = "region"; state.field = "전체"; drawChips(); draw(); });
   $("chips").addEventListener("click", (ev) => {
     const b = ev.target.closest("button[data-v]");
     if (!b) return;
-    if (state.mode === "field") state.field = b.dataset.v; else state.regionType = b.dataset.v;
+    if (state.mode === "field") state.field = b.dataset.v; else state.regionTypes = [];
+    drawChips(); draw();
+  });
+  $("chips").addEventListener("change", (ev) => {
+    if (!ev.target.matches('input[type="checkbox"]')) return;
+    state.regionTypes = [...$("chips").querySelectorAll('input[type="checkbox"]:checked')].map((i) => i.value);
     drawChips(); draw();
   });
   const step = () => Math.max(260, $("results").clientWidth * 0.8);

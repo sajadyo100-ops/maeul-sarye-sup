@@ -38,6 +38,18 @@ test("searchCases: 지역 유형으로 거르기", () => {
   assert.deepEqual(searchCases(cases, { regionType: "군" }).map((c) => c.id), ["b"]);
 });
 
+test("searchCases: 지역 유형 여러 개를 함께 고르면 모두 보여 줌", () => {
+  assert.deepEqual(searchCases(cases, { regionTypes: ["군", "시"] }).map((c) => c.id), ["b", "c"]);
+});
+
+test("searchCases: 지역 유형을 하나도 안 고르면 전체", () => {
+  assert.equal(searchCases(cases, { regionTypes: [] }).length, 3);
+});
+
+test("searchCases: 지역 체크와 검색어를 함께 적용", () => {
+  assert.deepEqual(searchCases(cases, { query: "청소년", regionTypes: ["군", "시"] }).map((c) => c.id), ["c"]);
+});
+
 test("searchCases: 지역명으로도 찾음", () => {
   assert.deepEqual(searchCases(cases, { query: "다시" }).map((c) => c.id), ["c"]);
 });

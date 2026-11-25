@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { escapeHtml, renderCard, renderResults, renderNew, renderLoadError } from "../js/app.js";
+import { escapeHtml, renderCard, renderResults, renderNew, renderLoadError, renderRegionChecks } from "../js/app.js";
 
 const c = {
   id: "a", region: "가구", regionType: "특별·광역시 자치구", title: "골목길 조명", fields: ["안전"],
@@ -39,6 +39,13 @@ test("renderResults: 사례 수만큼 카드", () => {
 test("renderNew: 0건이면 빈 문자열, 1건이면 NEW", () => {
   assert.equal(renderNew([]), "");
   assert.ok(renderNew([c]).includes("NEW"));
+});
+
+test("renderRegionChecks: 지역 유형마다 체크박스, 고른 것만 체크됨", () => {
+  const html = renderRegionChecks(["시"]);
+  assert.equal(html.split('type="checkbox"').length - 1, 4);
+  assert.match(html, /value="시" checked/);
+  assert.doesNotMatch(html, /value="군" checked/);
 });
 
 test("renderLoadError: 불러오기 실패 문구", () => {
