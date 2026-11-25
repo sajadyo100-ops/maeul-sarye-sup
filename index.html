@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>마을예산 사례숲</title>
+  <meta name="description" content="전국 주민참여예산 우수사례를 검색어와 분야로 찾아보는 비공식 사례 모음">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="site-name">🌳 마을예산 사례숲</p>
+      <h1>우리 마을에 필요한 사업,<br>다른 마을은 어떻게 했을까?</h1>
+      <form id="search-form" class="search" role="search">
+        <label for="search" class="sr-only">사례 검색</label>
+        <input id="search" type="search" placeholder="예: 골목길, 어르신, 쓰레기" autocomplete="off">
+        <button type="submit" aria-label="검색">🔍</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section id="new-section" class="new" hidden>
+      <h2>🌱 이번 달 새 사례 <span class="badge">NEW</span></h2>
+      <div id="new-list" class="new-list"></div>
+    </section>
+
+    <section id="cases" class="browse">
+      <h2>주민이 제안하고, 마을이 바꾼 이야기</h2>
+      <div class="modes">
+        <button type="button" id="mode-field" class="mode on">분야별</button>
+        <button type="button" id="mode-region" class="mode">지역별</button>
+      </div>
+      <div id="chips" class="chips"></div>
+    </section>
+
+    <section class="results-wrap" aria-live="polite">
+      <p class="count-line">찾은 사례 <b id="count">0건</b></p>
+      <div class="carousel">
+        <button type="button" id="prev" class="arrow" aria-label="이전 사례">‹</button>
+        <div id="results" class="results"></div>
+        <button type="button" id="next" class="arrow" aria-label="다음 사례">›</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>개인이 운영하는 비공식 사례 모음이며, 정확한 내용은 원문 링크에서 확인하세요.</p>
+    <p id="updated" class="muted"></p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

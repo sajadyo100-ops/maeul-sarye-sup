@@ -1,0 +1,35 @@
+{
+  "updated": "2026. 11. 25.",
+  "cases": [
+    {
+      "id": "sample-001",
+      "region": "예시",
+      "regionType": "광역시 자치구",
+      "title": "예시 사업: 골목길 조명 개선",
+      "fields": ["안전", "골목·주거"],
+      "year": 2025,
+      "budget": null,
+      "summary": "화면 확인용 예시 자료임. 실제 사례로 바꿀 예정임.",
+      "awardSource": "예시",
+      "url": "https://example.com/",
+      "status": "확인 완료",
+      "checkedDate": "2026. 11. 25.",
+      "addedMonth": "2026-11"
+    },
+    {
+      "id": "sample-002",
+      "region": "예시",
+      "regionType": "군",
+      "title": "예시 사업: 마을 쓰레기 줄이기",
+      "fields": ["환경"],
+      "year": 2024,
+      "budget": "1,000만원(예시)",
+      "summary": "화면 확인용 예시 자료임. 실제 사례로 바꿀 예정임.",
+      "awardSource": "예시",
+      "url": "https://example.com/",
+      "status": "확인 완료",
+      "checkedDate": "2026. 11. 25.",
+      "addedMonth": null
+    }
+  ]
+}
