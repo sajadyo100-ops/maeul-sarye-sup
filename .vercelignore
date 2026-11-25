@@ -2,3 +2,5 @@ tests
 tools
 package.json
 .vercel
+.env*
+.gitignore
